@@ -13,6 +13,12 @@ Idea 3. Mapping and graphically showing the different paths to take around campu
 Idea 4. Displaying points of interest for college students at UCSD related to entertainment, food, shopping etc.. This will especially be useful for students who are new to the San Diego area.
 ![alt tag](https://github.com/ameezus/cogs121/blob/master/IMG_2964.JPG)
 
+Belal Aboabdo
+Idea 5. Maps popular times of study spaces on campus to quickly find place to study.
+![alt tag](https://github.com/ameezus/cogs121/blob/master/20170410_124204.jpg)
+
+Idead 6. Crowd source ridesharing for UCSD students to efficiently commute or plan trip.
+![alt tag](https://github.com/ameezus/cogs121/blob/master/20170410_124225.jpg)
 
 Khaled Ahmad
 Idea 7. Find people studying the same class around your location to form study groups. 

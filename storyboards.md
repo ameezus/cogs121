@@ -1,10 +1,10 @@
 
 Ameer Muhtaseb
 Idea 1. Mapping all of the restrooms on the UCSD campus with ratings associated with each restroom.
-![alt tag](https://github.com/ameezus/cogs121/blob/master/IMG_8481.JPG)
+![alt tag](https://github.com/ameezus/cogs121/blob/master/IMG_8481.jpg)
 
 Idea 2. Displaying all of the nearest parking on the UCSD campus based on the type of parking (permit, pay parking etc.) the user is looking for.
-![alt tag](https://github.com/ameezus/cogs121/blob/master/IMG_8482.JPG)
+![alt tag](https://github.com/ameezus/cogs121/blob/master/IMG_8482.jpg)
 
 Shreeman Hariharan
 Idea 3. Mapping and graphically showing the different paths to take around campus to get from one place to another using the fastest possible way.
@@ -16,7 +16,7 @@ Idea 4. Displaying points of interest for college students at UCSD related to en
 
 Khaled Ahmad
 Idea 7. Find people studying the same class around your location to form study groups. 
-![alt tag](https://github.com/ameezus/cogs121/blob/master/IMG_2352.JPG)
+![alt tag](https://github.com/ameezus/cogs121/blob/master/IMG_2352.jpg)
 
 Idea 8. An app that analyzes your emails for travel information, and plots data of where you have been on a map. 
 ![alt tag](https://github.com/ameezus/cogs121/blob/master/IMG_2353.JPG)

@@ -1,8 +1,9 @@
 Project Title: Travel Tracker
   
-Summary: Keep track of everywhere you have visited and play around with your data.
+Summary: Keep track of everywhere you have visited using your email and play around with your data.
 
 Storyboard:
+![alt tag](https://github.com/ameezus/cogs121/blob/master/IMG_2353.JPG)
 
 Classmates' Feedback:
 

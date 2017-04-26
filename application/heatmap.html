@@ -60,15 +60,15 @@
 
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 4,
-          center: {lat: 38.1176298, lng: -107.8887845}
+          zoom: 3,
+          center: {lat: 20, lng: -20}
         });
 
         heatmap = new google.maps.visualization.HeatmapLayer({
           data: getPoints(),
           map: map
         });
-		heatmap.set('radius',40);
+		heatmap.set('radius',15);
       }
 
       function toggleHeatmap() {

@@ -1,6 +1,6 @@
 Description of what each team member has done:
   
-  Khaled Ahmad: 
+  Khaled Ahmad: Edited paramerters for Google Maps API to fit in the screen and have a larger radius for the heat map locations. Also researched NodeJS so that we can use it for our application. 
   
   Belal Aboabdo: Hard coded longitude and latidude data for heatmap, researched setup for Vega and leaflet API's. 
   

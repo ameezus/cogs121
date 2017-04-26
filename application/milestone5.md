@@ -1,7 +1,7 @@
 Description of what each team member has done:
-  Khaled Ahmad:
+  Khaled Ahmad: 
   Belal Aboabdo:
-  Shreeman Hariharan:
+  Shreeman Hariharan: Researched how to use the Google Maps API and include the heatmap layering over the map.
   Ameer Muhtaseb:
   
 Screenshot:

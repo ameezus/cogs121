@@ -5,7 +5,7 @@ Description of what each team member has done:
   Ameer Muhtaseb:
   
 Screenshot:
-  ![alt tag](https://github.com/ameezus/cogs121/master/application/heatmapscreenshot.PNG)
+  ![alt tag](https://github.com/ameezus/cogs121/blob/master/application/heatmapscreenshot.PNG)
 
 Description:
   This screenshot shows a heat map of where a user has visited/traveled to. Just like any other heat map, the bigger/more red

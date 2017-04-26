@@ -2,7 +2,7 @@ Description of what each team member has done:
   
   Khaled Ahmad: 
   
-  Belal Aboabdo:
+  Belal Aboabdo: Hard coded longitude and latidude data for heatmap, researched setup for Vega and leaflet API's. 
   
   Shreeman Hariharan: Researched how to use the Google Maps API and include the heatmap layering over the map.
   

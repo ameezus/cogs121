@@ -41,12 +41,14 @@
   </head>
 
   <body>
+<!--
     <div id="floating-panel">
       <button onclick="toggleHeatmap()">Toggle Heatmap</button>
       <button onclick="changeGradient()">Change gradient</button>
       <button onclick="changeRadius()">Change radius</button>
       <button onclick="changeOpacity()">Change opacity</button>
     </div>
+-->
     <div id="map"></div>
     <script>
 
@@ -58,15 +60,15 @@
 
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 13,
-          center: {lat: 37.775, lng: -122.434},
-          mapTypeId: 'satellite'
+          zoom: 4,
+          center: {lat: 38.1176298, lng: -107.8887845}
         });
 
         heatmap = new google.maps.visualization.HeatmapLayer({
           data: getPoints(),
           map: map
         });
+		heatmap.set('radius',40);
       }
 
       function toggleHeatmap() {

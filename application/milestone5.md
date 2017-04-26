@@ -1,8 +1,13 @@
 Description of what each team member has done:
+  
   Khaled Ahmad: 
+  
   Belal Aboabdo:
+  
   Shreeman Hariharan: Researched how to use the Google Maps API and include the heatmap layering over the map.
-  Ameer Muhtaseb:
+  
+  Ameer Muhtaseb: Hard coded somem longitude/latitude points for the heat map, created the milestone 5 markdown file and
+  researched some of the mapping API's suggested by the professor.
   
 Screenshot:
   ![alt tag](https://github.com/ameezus/cogs121/blob/master/application/heatmapscreenshot.PNG)

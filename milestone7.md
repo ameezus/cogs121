@@ -15,7 +15,7 @@ are in a circle on the heatmap, the more places in that region the user has been
 ![alt tag](https://github.com/ameezus/cogs121/blob/master/ms7heatmap.PNG)
 
 This functionality below is the graph view of the travel locations that allows the user to graphically visualize where they have travelled in terms of cities worldwide. The bubbles in this graph represent individual cities that the user has travelled to and the bubbles are
-sized based on how long the user has traveled at that location for. This is an imporvement from Milestone 5 because 
+sized based on how long the user has traveled at that location for. This is an improvement from Milestone 5 because 
 Milestone 5 did not have any graphical representation of the travel data and just has a basic heatmap. The toggle feature is also
 included on this graph view as the user can switch to a different way of viewing the travel data.
 ![alt tag](https://github.com/ameezus/cogs121/blob/master/ms7vegagraph.PNG)

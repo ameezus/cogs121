@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Heatmaps</title>
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        background:blue;display: block;
+        position:absolute;
+        height:auto;
+        bottom:0;
+        top:0;
+        left:0;
+        right:0;
+        /*margin-top:50px;*/
+      }
+      .navbar-custom {
+        position: absolute;    
+        top: 0px;
+        left: 0px;
+        right: 0px;    
+        height: 40px;
+        color: #FFFFFF;
+        background-color: #ADD8E6;
+      }
+      .navbar-brand {
+        color: white;
+      }
+      #htext {
+        color: black;
+      }
+      html, body {
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  </head>
+
+  <body>
+    <!--<div class="navbar navbar-fixed-top navbar-custom">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">TravelTracker</a>
+        </div>
+
+         Collect the nav links, forms, and other content for toggling 
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">    
+            <li><a id="htext" href="#">Add Location</a></li>
+            <li><a id="htext" href="#">Remove Location</a></li>
+            <li><a id="htext" href="#">Share</a></li>
+          </ul>
+          <form class="navbar-form navbar-left">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Search">
+            </div>
+            <button type="submit" class="btn btn-default">Find Location</button>
+          </form>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a id="htext" href="#">Exit Heatmap</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>-->
+
+    <div id="map"></div>
+
+    <script>
+      var map, heatmap;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 3,
+          center: {lat: 20, lng: -20},
+          styles: [
+    {
+        "featureType": "administrative",
+        "elementType": "labels.text.fill",
+        "stylers": [
+            {
+                "color": "#444444"
+            }
+        ]
+    },
+    {
+        "featureType": "landscape",
+        "elementType": "all",
+        "stylers": [
+            {
+                "color": "#f2f2f2"
+            }
+        ]
+    },
+    {
+        "featureType": "poi",
+        "elementType": "all",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "road",
+        "elementType": "all",
+        "stylers": [
+            {
+                "saturation": -100
+            },
+            {
+                "lightness": 45
+            }
+        ]
+    },
+    {
+        "featureType": "road.highway",
+        "elementType": "all",
+        "stylers": [
+            {
+                "visibility": "simplified"
+            }
+        ]
+    },
+    {
+        "featureType": "road.arterial",
+        "elementType": "labels.icon",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "transit",
+        "elementType": "all",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "water",
+        "elementType": "all",
+        "stylers": [
+            {
+                "color": "#46bcec"
+            },
+            {
+                "visibility": "on"
+            }
+        ]
+    }
+]});
+
+        heatmap = new google.maps.visualization.HeatmapLayer({
+          data: getPoints(),
+          map: map
+        });
+        heatmap.set('radius',30);
+        setGradient();
+      }
+      
+      function setGradient() {
+        var gradient = [
+          'rgba(0, 255, 255, 0)',
+          'rgba(0, 255, 255, 1)',
+          'rgba(0, 191, 255, 1)',
+          'rgba(0, 127, 255, 1)',
+          'rgba(0, 63, 255, 1)',
+          'rgba(0, 0, 255, 1)',
+          'rgba(0, 0, 223, 1)',
+          'rgba(0, 0, 191, 1)',
+          'rgba(0, 0, 159, 1)',
+          'rgba(0, 0, 127, 1)',
+          'rgba(63, 0, 91, 1)',
+          'rgba(127, 0, 63, 1)',
+          'rgba(191, 0, 31, 1)',
+          'rgba(255, 0, 0, 1)'
+        ]
+        heatmap.set('gradient', heatmap.get('gradient') ? null : gradient);
+      }
+
+      function getPoints() {
+        return [
+          new google.maps.LatLng(37.782551, -122.445368),
+          new google.maps.LatLng(37.759732, -122.406484),
+          new google.maps.LatLng(37.758910, -122.406228),
+          new google.maps.LatLng(37.758182, -122.405695),
+          new google.maps.LatLng(37.757676, -122.405118),
+          new google.maps.LatLng(37.757039, -122.404346),
+          new google.maps.LatLng(37.756335, -122.403719),
+          new google.maps.LatLng(37.755503, -122.403406),
+          new google.maps.LatLng(37.754665, -122.403242),
+          new google.maps.LatLng(37.753837, -122.403172),
+          new google.maps.LatLng(37.752986, -122.403112),
+          new google.maps.LatLng(37.751266, -122.403355),
+          new google.maps.LatLng(32.715736, -117.161087),
+          new google.maps.LatLng(32.88006, -117.234014),
+          new google.maps.LatLng(32.868621, -117.21822),
+          new google.maps.LatLng(37.354108, -121.955236),
+          new google.maps.LatLng(33.717471, -117.831143),
+          new google.maps.LatLng(31.768319, 35.21371),
+          new google.maps.LatLng(22.906847, -43.172896),
+          new google.maps.LatLng(34.068921, -118.445181),
+          new google.maps.LatLng(47.606209, -122.332071),
+          new google.maps.LatLng(49.282729, -123.120738),
+          new google.maps.LatLng(31.753738, 35.847139),
+          new google.maps.LatLng(37.888175, -4.779383),
+          new google.maps.LatLng(36.140751, -5.353585),
+          new google.maps.LatLng(35.759465, 5.833954),
+          new google.maps.LatLng(30.04442,  31.235712),
+          new google.maps.LatLng(31.235712, 35.928372),
+          new google.maps.LatLng(33.893791, 35.501777),
+          new google.maps.LatLng(52.520007, 13.404954),
+          new google.maps.LatLng(40.730610, -73.935242),
+          new google.maps.LatLng(40.730610, -73.935243),
+          new google.maps.LatLng(40.730610, -73.935244),
+          new google.maps.LatLng(40.730610, -73.935245),
+          new google.maps.LatLng(40.730610, -73.935246),
+          new google.maps.LatLng(40.730610, -73.935250),
+          new google.maps.LatLng(40.730610, -73.935260),
+          new google.maps.LatLng(40.730610, -73.935262),
+          new google.maps.LatLng(40.730610, -73.935270),
+          new google.maps.LatLng(40.730610, -73.935282),
+          new google.maps.LatLng(40.730610, -73.935280),
+          new google.maps.LatLng(34.426388, -117.300880),
+          new google.maps.LatLng(43.224194, -86.235809),
+          new google.maps.LatLng(25.468721, -80.477554),
+          new google.maps.LatLng(39.932117, -105.281639)
+        ];
+      }
+    </script>
+
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqIRVAN-BQkHCpcoGpg6K-ZqQvAHxSZk8&libraries=visualization&callback=initMap">
+    </script>
+  </body>
+</html>

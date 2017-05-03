@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+    <head>
+        <title> Travel Visualizer</title>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+        
+        <style>
+            html{
+                height:100%
+            }
+            body{
+                margin:0;
+                padding:0;
+                width: 100%;
+                height: 100%;
+            }
+            .frame{
+                width: 100%;
+                height: 100%;
+            }
+            iframe{
+                border:0;
+                width:100%;
+                height:100%;
+            }
+            .overlay{
+                position: absolute;
+                top: 10%;
+                right: 5%;
+            }
+            .button{
+                width:100px;
+                height: 40px;
+                background-color: #222222;
+                color:white;
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+                font-size: 18px;
+                border-width:2px;
+                border-color: white;
+                border-radius: 5px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="frame">
+            <iframe id="vis" src="heatmap.html"></iframe>
+        </div>
+        <div class="overlay">
+
+            <div><button onclick="toggle()" class="button">Toggle</button> </div>
+        </div>
+        
+    </body>
+    <script>
+        var visList = ["heatmap.html","index33.html"];
+        var current = 0;
+        function toggle() {
+            
+            document.getElementById('vis').src = visList[(++current) % visList.length];
+        }
+   </script>
+</html>

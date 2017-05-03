@@ -2,7 +2,7 @@ Shreeman Hariharan: Worked on making the heatmap for Milestone 7 display the loc
 heatmap feature more apparent. Worked on adding a navbar that could be used later for client-side features such as adding locations,
 deleting locations, exiting the map etc. Worked on the video for Milestone 6 as the narrator in the video.
 
-Belal Aboabdo:
+Belal Aboabdo: Worked on heatmap and changing themes/vizualizations to make data more readable and visable. Compiled list of types of data we can use to graphically represent in the future. Also attempted to create second visualization with Vega API but was unsuccessful. Reasearched D3 API instead to use for later visualizations. Directed and filmed video for Milestone 6 video prototype.  
 
 Ameer Muhtaseb: Worked on researching d3/Vega for our second visualization, discovering d3 would be much easier to use for the purposes of our project. Worked on collecting data to use in that second visualization. Tested the toggle feature that Khaled created. Played around with Vega trying to see if there was some sort of extra functionality that d3 does not offer that would be worth the extra work to set up.
 

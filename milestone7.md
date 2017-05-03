@@ -4,7 +4,7 @@ deleting locations, exiting the map etc. Worked on the video for Milestone 6 as 
 
 Belal Aboabdo:
 
-Ameer Muhtaseb:
+Ameer Muhtaseb: Worked on researching d3/Vega for our second visualization, discovering d3 would be much easier to use for the purposes of our project. Worked on collecting data to use in that second visualization. Tested the toggle feature that Khaled created. Played around with Vega trying to see if there was some sort of extra functionality that d3 does not offer that would be worth the extra work to set up.
 
 Khaled Ahmad:
 

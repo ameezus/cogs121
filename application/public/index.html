@@ -3,7 +3,7 @@
     <head>
         <title> Travel Visualizer</title>
         <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-        
+
         <style>
             html{
                 height:100%
@@ -49,13 +49,13 @@
 
             <div><button onclick="toggle()" class="button">Toggle</button> </div>
         </div>
-        
+
     </body>
     <script>
-        var visList = ["heatmap.html","index33.html","bundle.html"];
+        var visList = ["heatmap.html","index33.html","bundle.html","timeline.html"];
         var current = 0;
         function toggle() {
-            
+
             document.getElementById('vis').src = visList[(++current) % visList.length];
         }
    </script>

@@ -1,0 +1,33 @@
+start,end,frequency,duration
+San Diego,Los Angeles ,10,1
+San Diego,San Fransisco,5,7
+San Diego,Orange County,20,365
+San Diego,Portland,1,7
+San Diego,Seattle,3,7
+San Diego,Washington D.C.,8,30
+San Diego,Dallas,1,7
+San Diego,New York,3,7
+Los Angeles,San Diego,10,365
+Los Angeles,San Fransisco,5,365
+Los Angeles,New York,3,30
+Los Angeles,Washington D.C.,2,7
+Los Angeles,Jerusalem,4,30
+Los Angeles,Amman,10,30
+Los Angeles,Brasilia,3,30
+San Fransisco,Beijing,2,7
+San Fransisco,Seattle,5,1
+San Fransisco,Portland,5,7
+San Fransisco,Jerusalem,2,30
+San Fransisco,San Diego,5,7
+San Fransisco,Los Angeles ,5,7
+San Fransisco,Chicago,20,7
+San Fransisco,Dallas,2,1
+San Fransisco,Amman,10,365
+Portland,Seattle,2,1
+Seattle,Portland,2,365
+Dallas,San Fransisco,2,365
+New York,Los Angeles ,7,30
+New York,Washington D.C.,5,7
+Jerusalem,Amman,16,7
+Amman,Jerusalem,16,365
+Beijing,San Fransisco,2,30

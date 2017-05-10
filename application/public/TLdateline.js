@@ -1,6 +1,6 @@
 function loadchart(div, json) {
     // pass in id of div where the svg will live and name/url of json data
-    var dayWidth = 100,
+    var dayWidth = 34,
         height = 200,
         margin = {
             top: 40,

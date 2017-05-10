@@ -1,4 +1,4 @@
-Khaled Ahmad:
+Khaled Ahmad: I worked on implementing a method in which we could easily store data and an api to reach each of the data points. This feature is not yet complete. I also worked on making the vidsualizations more appealing on the screen by centering them. I also looked into the facebook API in order to see if we could get the checkin data and realized checkins are no longer a feature on FB, but there are work arounds that might be better.
 
 Ameer Muhtaseb: I worked on adding another visualization to our app. This visualization is a timeline that displays when and
 where the user traveled to/visited. Just like any other timeline the event (place traveled to) is marked down next to the date

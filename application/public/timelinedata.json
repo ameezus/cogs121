@@ -1,0 +1,18 @@
+{
+		"nodes": [
+         {"name": "Letter 1","date":"2017-01-02","id":"San Diego","from":"R","type":"fixed"},
+         {"name": "Letter 2","date":"2017-01-15","id":"San Francisco","from":"F","type":"fixed"},
+         {"name": "Letter 3","date":"2017-01-29","id":"Miami","from":"R","type":"hasAnswer"},
+         {"name": "Letter 4","date":"2017-02-07","id":"Atlanta","from":"R","type":"fixed"},
+
+         {"name": "Letter 5","date":"2017-02-17","id":"D.C.","from":"R","type":"isAnswer"}
+      ],
+
+      "links": [
+         {"source":0, "target":1, "type": "answeredby"},
+         {"source":1, "target":2, "type": "answeredby"},
+         {"source":2, "target":3, "type": "answeredby"},
+         {"source":3, "target":4, "type": "answered§by"}
+      ]
+
+}

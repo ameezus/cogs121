@@ -1,6 +1,10 @@
 Khaled Ahmad:
 
-Ameer Muhtaseb:
+Ameer Muhtaseb: I worked on adding another visualization to our app. This visualization is a timeline that displays when and
+where the user traveled to/visited. Just like any other timeline the event (place traveled to) is marked down next to the date
+it happened on. The time line includes arrows to show when/where a trip started and finished. Different trips will have
+different sets of arrows. I also linked a json file to the visualization so that we could add/edit/remove data as necessary.
+This visualization came from D3.
 
 Belal Aboabdo: Gathered initial data to represent bundle graph. Also implemented bundle graph using the D3 API and connected graph to node. 
 

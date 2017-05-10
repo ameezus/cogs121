@@ -14,8 +14,14 @@ now shows the starting and ending locations for each trip that has been taken, w
 regarding their data.
 ![alt tag](https://github.com/ameezus/cogs121/blob/master/circle%20graph.PNG)
 
-This functionality is another graphical representation of the data that is displayed on a line graph
+This functionality is another graphical representation of the data that is displayed on a line graph such that the dates of
+travel are shown with respect to where the user has travelled. This functionality is an improvement since Milestone 7 because it
+now shows the time information regarding trips taken, which is more useful to the users in visualizing their travel data in a 
+better way.
 ![alt tag](https://github.com/ameezus/cogs121/blob/master/line%20graph.PNG)
 
-
+This functionality is a feature that allows users to add data points regarding where they have travelled. This feature is an improvement
+from Milestone 7 because the app now has a means of allowing users to add locations to their dataset. The user may now add data 
+points to their dataset by importing locations from their Facebook account based on places they have checked into or by 
+manually entering location names based on city, state, and country.
 ![alt tag](https://github.com/ameezus/cogs121/blob/master/add%20locations.PNG)

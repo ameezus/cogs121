@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+    <title>Add Locations</title>
+<style> 
+.flex-container {
+    display: -webkit-flex;
+    display: flex;  
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    text-align: center;
+}
+
+.flex-container > * {
+    padding: 15px;
+    -webkit-flex: 1 100%;
+    flex: 1 100%;
+}
+
+.article {
+    text-align: left;
+}
+
+header {background: black;color:white;}
+.nav {background:#eee;}
+
+.nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+.nav ul a {
+    text-decoration: none;
+}
+
+@media all and (min-width: 768px) {
+    .nav {text-align:left;-webkit-flex: 1 auto;flex:1 auto;-webkit-order:1;order:1;}
+    .article {-webkit-flex:5 0px;flex:5 0px;-webkit-order:2;order:2;}
+    footer {-webkit-order:3;order:3;}
+}
+</style>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+  <div class="flex-container">
+  <header>
+    <h1>Add Locations</h1>
+  </header>
+    <nav class="nav">
+      <h1>IMPORT FROM FACEBOOK</h1>
+      
+      <button onclick="toMap()" class="btn btn-default">Import from Facebook</button>
+
+      <h2 style="color: red">OR</h2>
+
+      <h1>ADD MANUALLY</h1>
+      <form>
+        <div class="form-group">
+          <label>City</label>
+          <input class="form-control" style="width:50%" placeholder="City">
+        </div>
+        <div class="form-group">
+          <label>State</label>
+          <input class="form-control" style="width:50%" placeholder="State">
+        </div>
+        <div class="form-group">
+          <label>Country</label>
+          <input class="form-control" style="width:50%" placeholder="Country">
+        </div>
+      </form>
+
+      <button onclick="toMap()" class="btn btn-default">Add</button>
+      <button onclick="toMap()" class="btn btn-default">Cancel</button>
+
+    </nav>
+  </div>
+</body>
+
+<script type="text/javascript">
+    function toMap() {
+        location.href = "index.html";
+    };
+</script>
+
+</html>

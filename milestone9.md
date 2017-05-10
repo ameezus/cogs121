@@ -14,7 +14,7 @@ now shows the starting and ending locations for each trip that has been taken, w
 regarding their data.
 ![alt tag](https://github.com/ameezus/cogs121/blob/master/circle%20graph.PNG)
 
-
+This functionality is another graphical representation of the data that is displayed on a line graph
 ![alt tag](https://github.com/ameezus/cogs121/blob/master/line%20graph.PNG)
 
 

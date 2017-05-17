@@ -1,7 +1,7 @@
 Khaled Ahmad:
 I've helped with figuring out how to structure the data in order to display in the visualizations. helped with thinking of how to pivot our idea into more of a Facebook visualization application rather than purely a travel application. We started to implemenet the facebook login, so that we can get the data. Also helped with some design / css things. 
 
-Belal Aboabdo:
+Belal Aboabdo: Added Facebook login API and started working on Facebook Graph API to get location data from user login. We will then scrape the data from the JSON returned by FB Graph API and present users actual data. 
 
 Ameer Muhtaseb: I have been researching how we can more efficiently use facebook data so that we can expand the capabilities of our app. I have also worked creating a legend for one of the visualizations and cleaning up some of the other code in our repo.
 

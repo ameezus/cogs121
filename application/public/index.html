@@ -16,7 +16,9 @@
             }
             .frame{
                 width: 100%;
-                height: 100%;
+                height: 95%;
+                position: absolute;
+                top: 50px;
             }
             iframe{
                 border:0;
@@ -28,17 +30,22 @@
                 top: 10%;
                 right: 5%;
             }
-            .button{
-                width:100px;
-                height: 40px;
-                background-color: #222222;
-                color:white;
-                font-family: Verdana, Geneva, Tahoma, sans-serif;
-                font-size: 18px;
-                border-width:2px;
-                border-color: white;
-                border-radius: 5px;
+            .navbar-brand-centered {
+                position: absolute;
+                left: 50%;
+                display: block;
+                width: 160px;
+                text-align: center;
+                background-color: transparent;
             }
+            .navbar>.container .navbar-brand-centered, 
+            .navbar>.container-fluid .navbar-brand-centered {
+                margin-left: -80px;
+            }
+            .active a{
+                color: orange !important;
+            }
+
         </style>
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -70,9 +77,6 @@
            }(document, 'script', 'facebook-jssdk'));
         </script>
 
-        <div id="fb-root"></div>
-
-      <div id="fb-root"></div>
         <script>(function(d, s, id) {
           var js, fjs = d.getElementsByTagName(s)[0];
           if (d.getElementById(id)) return;
@@ -82,26 +86,69 @@
         }(document, 'script', 'facebook-jssdk'));
         </script>
 
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+          <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+              <a class="navbar-brand" href="#">Travel Visualizer</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav">
+                <li class="active heatmap" onClick="load('heatmap.html')"><a>Heatmap</a></li>
+                <li class="bubble" onClick="load('index33.html')"><a>Bubble</a></li>
+                <li class="circle" onClick="load('bundle.html')"><a>Circle</a></li>
+                <li class="line" onClick="load('timeline.html')"><a>Line</a></li>
+              </ul>
+
+              <ul class="nav navbar-nav navbar-right">
+                <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>
+                <li class="add" onClick="load('addLocations.html')"><a>Add Data</a></li>
+              </ul>
+            </div><!-- /.container-fluid -->
+        </nav>
+
         <div class="frame">
             <iframe id="vis" src="heatmap.html"></iframe>
         </div>
-
-        <div class="overlay">
-            <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>
-            <div>
-
-                <button onclick="toggle()" class="button">Toggle</button> 
-                <button onclick="location.href = 'addLocations.html'" class="button">Add</button>
-            </div>
-        </div>
-
-        
     </body>
+
     <script>
-        var visList = ["heatmap.html","index33.html","bundle.html","timeline.html"];
-        var current = 0;
-        function toggle() {
-            document.getElementById('vis').src = visList[(++current) % visList.length];
+        function load(page_name) {
+            document.getElementById('vis').src = page_name;
+
+            if($('.heatmap').hasClass('active')){
+              $('.heatmap').removeClass('active');
+            }
+            if($('.bubble').hasClass('active')){
+              $('.bubble').removeClass('active');
+            }
+            if($('.circle').hasClass('active')){
+              $('.circle').removeClass('active');
+            }
+            if($('.line').hasClass('active')){
+              $('.line').removeClass('active');
+            }
+            if($('.add').hasClass('active')){
+              $('.add').removeClass('active');
+            }
+
+            if(page_name == 'heatmap.html') {
+              $('.heatmap').addClass('active');
+            }
+            if(page_name == 'index33.html') {
+              $('.bubble').addClass('active');
+            }
+            if(page_name == 'bundle.html') {
+              $('.circle').addClass('active');
+            }
+            if(page_name == 'timeline.html') {
+              $('.line').addClass('active');
+            }
+            if(page_name == 'addLocations.html') {
+              $('.add').addClass('active');
+            }
         }
    </script>
 </html>

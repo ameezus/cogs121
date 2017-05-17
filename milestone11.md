@@ -13,4 +13,5 @@ This UI feature is the navigation bar that allows the user to access the differe
 is an improvement from the previous milestone submission as there are no more buttons in an overlay container in the middle of the 
 screen as this used to hide some of the map and graph features. The navbar now highlights what feature the user is currently viewing 
 for reference.
-![alt tag](https://github.com/ameezus/cogs121/blob/master/ms11navbar.PNG)
+This screenshot also shows the legend we added to better explain the visualization.
+![alt tag](https://github.com/ameezus/cogs121/blob/masterScreen Shot 2017-05-17 at 12.29.37 PM.png)

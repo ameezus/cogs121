@@ -3,7 +3,7 @@ I've helped with figuring out how to structure the data in order to display in t
 
 Belal Aboabdo:
 
-Ameer Muhtaseb:
+Ameer Muhtaseb: I have been researching how we can more efficiently use facebook data so that we can expand the capabilities of our app. I have also worked creating a legend for one of the visualizations and cleaning up some of the other code in our repo.
 
 Shreeman Hariharan: Since Milestone 9, I helped my team come up with the elevator pitch and I worked on making the navbar on the app. 
 This navbar replaced the old button system that allowed for toggling between displays as this new navbar has every display and page 

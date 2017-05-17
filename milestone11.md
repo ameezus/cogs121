@@ -1,4 +1,5 @@
 Khaled Ahmad:
+I've helped with figuring out how to structure the data in order to display in the visualizations. helped with thinking of how to pivot our idea into more of a Facebook visualization application rather than purely a travel application. We started to implemenet the facebook login, so that we can get the data. Also helped with some design / css things. 
 
 Belal Aboabdo:
 

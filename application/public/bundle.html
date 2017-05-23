@@ -15,15 +15,29 @@ path.chord {
   stroke-width: .75;
   fill-opacity: .75;
 }
+legend {
+  display: block;
+  padding-left: 2px;
+  padding-right: 2px;
+  border: none;
+}
+fieldset {
+  width: 33%;
+}
 
 </style>
 <body>
-<h4> Legend </h4>
-<p>Each edge represents a city traveled to/from</p>
-<p>Width of links from one edge to another represents<br> the frequency of travels between the two cities</p>
-<p>Colors of the links get darker with longer visits in a given city</p>
 
-<p>Tip: Hover over graph for more information</p>
+  <fieldset>
+    <legend>Legend</legend>
+    <p>Each edge represents a city traveled to/from</p>
+    <p>Width of links from one edge to another represents<br> the frequency of travels between the two cities</p>
+    <p>Colors of the links get darker with longer visits in a given city</p>
+
+    <p>Tip: Hover over graph for more information</p>
+  </fieldset>
+
+
 
 <script src="//d3js.org/d3.v3.min.js"></script>
 <script>
@@ -165,3 +179,4 @@ function value() {
 }
 
 </script>
+</body>

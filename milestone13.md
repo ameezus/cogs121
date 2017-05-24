@@ -1,6 +1,6 @@
 Shreeman Hariharan:
 
-Belal Aboabdo: 
+Belal Aboabdo: Implemented a new Bar Graph that displays the duration of time you spend traveling in each country in a given month. Generated fake data for now to dispolay the information. Also looked into getting location data from other social networks like Google and Instagram.
 
 Ameer Muhtaseb: Worked on making nicer legends for some of the visualizations, cleaned up some older code and helped test
 the new facebook integration.

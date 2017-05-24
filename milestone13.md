@@ -1,4 +1,6 @@
-Shreeman Hariharan:
+Shreeman Hariharan: I worked on brainstorming with the team
+about what APIs to use and what UI features to include in the
+future. I also tried to implement some trial navbars. 
 
 Belal Aboabdo: 
 
@@ -13,11 +15,3 @@ month, where they traveled in that month, and how much time they spent in that s
 to in the same month are differentiated by different colored blocks within the same bar.
 
 ![alt tag](https://github.com/ameezus/cogs121/blob/master/bar.jpg)
-
-
-
-
-This is the login page we added so that users can connect their facebook accounts to our app so that we can pull their
-facebook data and use it to populate our heatmap and other visualizations with their facebook checkins.
-
-![alt tag](https://github.com/ameezus/cogs121/blob/master/login.jpg)

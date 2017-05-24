@@ -61,7 +61,7 @@
        <script>
 
          var d1;
-         var accessToken = "EAACEdEose0cBAA6GWJjPZBV5jx9mkaRVMwaUO99qlFadzrpZCWemU8uCr8PyfKPz5KYrWoJ0POl9hv8HUGnFPJhiO2M4VzEwaia5cdumHBvoNBZA2MGIrwkizXbu1GwVX8sSst4KyjHQ1tZB7AOgLn97w8MddRYMOuNSgLaDhQl3BmdEpTPg";
+         var accessToken = "EAACEdEose0cBAKsPjLy0vn3CszZAaZCom0P1991xqZAz99FZB7hlZA2ahdKSvs6w3bZBAoJsrZBWZBCdKZBiKr2McfXZCA1HIgzUcvcBQaUaYYqyBhzzO8CAjYnyZCKifmPO4puAgOJzu6wU2aqeUv96MQNXVJFZBaJVu1sV9V6KIqF0l1ptEV0xuk6o";
   (function(d, s, id){
      var js, fjs = d.getElementsByTagName(s)[0];
      if (d.getElementById(id)) {return;}
@@ -83,7 +83,7 @@
 
   checkLoginState();
 
-  
+  console.log(accessToken);
 FB.api(
 '/me/feed',
             'GET',
@@ -108,6 +108,7 @@ FB.api(
     console.log('statusChangeCallback');
     console.log(response);
     accessToken = response.authResponse.accessToken;
+    console.log(accessToken);
     // The response object is returned with a status field that lets the
     // app know the current login status of the person.
     // Full docs on the response object can be found in the documentation

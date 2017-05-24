@@ -55,6 +55,7 @@
     var data = {"hello":3};
     var dataClean = [];
 function setUpData(d) {
+    console.log(d);
     data = d;
     console.log(data.data);
     // dataClean 
@@ -64,6 +65,7 @@ function setUpData(d) {
         }
         
     }
+    initMap(dataClean);
     console.log(dataClean);
 
 }
@@ -80,19 +82,14 @@ function setUpData(d) {
 
 
 
-      var map, heatmap;
-var ss = [
-          new google.maps.LatLng(37.782551, -122.445368),
-          new google.maps.LatLng(37.759732, -122.406484),
-          new google.maps.LatLng(37.758910, -122.406228)
-        ];
-        var d2 =  new google.maps.MVCArray([
-          new google.maps.LatLng(37.782551, -122.445368),
-          new google.maps.LatLng(37.759732, -122.406484),
-          new google.maps.LatLng(37.758910, -122.406228)
-        ]);
+        
+        
 
-      function initMap() {
+    var map, heatmap;
+
+      function initMap(data) {
+          var d2 = data;
+
         map = new google.maps.Map(document.getElementById('map'), {
           zoom: 3,
           center: {lat: 20, lng: -20},
@@ -178,13 +175,12 @@ var ss = [
 ]});
 
         heatmap = new google.maps.visualization.HeatmapLayer({
-          data: getPoints(),
+          data: d2,
           map: map
         });
-        heatmap.set('radius',30);
-        setGradient();
       }
-      
+
+
       function setGradient() {
         var gradient = [
           'rgba(0, 255, 255, 0)',
@@ -205,13 +201,10 @@ var ss = [
         heatmap.set('gradient', heatmap.get('gradient') ? null : gradient);
       }
 
-      function getPoints() {
-        return  d2;
-      }
     </script>
 
     <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqIRVAN-BQkHCpcoGpg6K-ZqQvAHxSZk8&libraries=visualization&callback=initMap">
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqIRVAN-BQkHCpcoGpg6K-ZqQvAHxSZk8&libraries=visualization">
     </script>
   </body>
 </html>

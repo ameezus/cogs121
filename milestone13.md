@@ -1,6 +1,6 @@
 Shreeman Hariharan:
 
-Belal Aboabdo: Implemented a new Bar Graph that displays the duration of time you spend traveling in each country in a given month. Generated fake data for now to dispolay the information. Also looked into getting location data from other social networks like Google and Instagram.
+Belal Aboabdo: 
 
 Ameer Muhtaseb: Worked on making nicer legends for some of the visualizations, cleaned up some older code and helped test
 the new facebook integration.
@@ -13,3 +13,11 @@ month, where they traveled in that month, and how much time they spent in that s
 to in the same month are differentiated by different colored blocks within the same bar.
 
 ![alt tag](https://github.com/ameezus/cogs121/blob/master/bar.jpg)
+
+
+
+
+This is the login page we added so that users can connect their facebook accounts to our app so that we can pull their
+facebook data and use it to populate our heatmap and other visualizations with their facebook checkins.
+
+![alt tag](https://github.com/ameezus/cogs121/blob/master/login.jpg)

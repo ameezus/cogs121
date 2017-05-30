@@ -13,39 +13,67 @@
                 padding:0;
                 width: 100%;
                 height: 100%;
+                position: relative;
             }
             .frame{
                 width: 100%;
-                height: 95%;
+                height: 100%;
                 position: absolute;
-                top: 50px;
+                z-index: 99;
             }
             iframe{
                 border:0;
                 width:100%;
                 height:100%;
             }
-            .overlay{
-                position: absolute;
-                top: 10%;
-                right: 5%;
+            .float {
+              position: absolute;
+              top: 30px;
+              left: 30px;
+              z-index: 100;
+              max-width: 300px;
+              background-color: white;
+              border-radius: 15px;
+              -moz-border-radius: 15px;
             }
-            .navbar-brand-centered {
-                position: absolute;
-                left: 50%;
-                display: block;
-                width: 160px;
-                text-align: center;
-                background-color: transparent;
+            .title {
+              color: black;
             }
-            .navbar>.container .navbar-brand-centered,
-            .navbar>.container-fluid .navbar-brand-centered {
-                margin-left: -80px;
+            .heatmap-info {
+              display: none;
+              color: black;
             }
-            .active a{
-                color: orange !important;
+            .heatmap:hover .heatmap-info {
+              display: block;
             }
-
+            .bubble-info {
+              display: none;
+              color: black;
+            }
+            .bubble:hover .bubble-info {
+              display: block;
+            }
+            .circle-info {
+              display: none;
+              color: black;
+            }
+            .circle:hover .circle-info {
+              display: block;
+            }
+            .line-info {
+              display: none;
+              color: black;
+            }
+            .line:hover .line-info {
+              display: block;
+            }
+            .bar-info {
+              display: none;
+              color: black;
+            }
+            .bar:hover .bar-info {
+              display: block;
+            }
         </style>
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -56,201 +84,220 @@
         <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/evil-icons/1.9.0/evil-icons.min.css">
+        <script src="https://cdn.jsdelivr.net/evil-icons/1.9.0/evil-icons.min.js"></script>
+
     </head>
     <body>
-       <script>
-
-         var d1;
-         var accessToken = "EAACEdEose0cBAOGbEbEffZA1trsNok5MZBtnrP0nN393Gpc9jTz3IgRvWZAxCYy9EOByAIRaxh6bLNNvku3xViyebDbGYV3NJjwekLiHZAZB5DZCP90811FliZBiRaqFn8QkosJMofhF2zNZAEPrbKUEjJEtM1bRg4JkPZCUb3slOGeKqzzDsZAORX";
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "//connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
-
-
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId            : '290268441425908',
-      autoLogAppEvents : true,
-      xfbml            : true,
-      version          : 'v2.9'
-    });
-    FB.AppEvents.logPageView();
+      <script>
+        var d1;
+        var accessToken = "EAACEdEose0cBANnN4a1bhW44shMnBIOvd30mgmfyD9SY4ViYFAfQoly2Tg7OtkHVwpcR3LJ8VOV5VbXRKxy2Vtw0jq1sCafNMQG1KsPw0ZAldZAAR6rUrgSXSdE1SSAc14sZADdZBLo3ipNubrZB6J8lZATvCoGhNGUXTi0GDntCvEwroWPKpZA";
+        
+        (function(d, s, id){
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) {return;}
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/en_US/sdk.js";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
 
 
-  checkLoginState();
+        window.fbAsyncInit = function() {
+          FB.init({
+          appId            : '290268441425908',
+          autoLogAppEvents : true,
+          xfbml            : true,
+          version          : 'v2.9'
+          });
+          FB.AppEvents.logPageView();
 
-  console.log(accessToken);
-FB.api(
-'/me/feed',
-            'GET',
-            {"fields":"place",
+          checkLoginState();
+
+          console.log(accessToken);
+          FB.api(
+          '/me/feed',
+          'GET',
+          {"fields":"place",
           access_token : accessToken},
-            function(response) {
-              // console.log(response);
-                d1 = response;
-                document.getElementById('heatmap').contentWindow.setUpData(d1);
-            }
-          );
+          function(response) {
+            // console.log(response);
+            d1 = response;
+            document.getElementById('heatmap').contentWindow.setUpData(d1);
+          });
+        };
 
+        function checkLoginState() {
+          FB.getLoginStatus(function(response) {
+            statusChangeCallback(response);
+          });
+        }
 
-  };
- function checkLoginState() {
-    FB.getLoginStatus(function(response) {
-      statusChangeCallback(response);
-    });
-  }
+        function statusChangeCallback(response) {
+          console.log('statusChangeCallback');
+          console.log(response);
+          accessToken = response.authResponse.accessToken;
+          console.log(accessToken);
+          // The response object is returned with a status field that lets the
+          // app know the current login status of the person.
+          // Full docs on the response object can be found in the documentation
+          // for FB.getLoginStatus().
+          if (response.status === 'connected') {
+            // Logged into your app and Facebook.
+            // window.location = "/index.html";
+          } else {
+            window.location = "/login.html";
+          }
+        }
 
-  function statusChangeCallback(response) {
-    console.log('statusChangeCallback');
-    console.log(response);
-    accessToken = response.authResponse.accessToken;
-    console.log(accessToken);
-    // The response object is returned with a status field that lets the
-    // app know the current login status of the person.
-    // Full docs on the response object can be found in the documentation
-    // for FB.getLoginStatus().
-    if (response.status === 'connected') {
-      // Logged into your app and Facebook.
-      // window.location = "/index.html";
-    } else {
-      window.location = "/login.html";
-    }
-  }
-
-//   FB.getLoginStatus(function(response) {
-//   if (response.status === 'connected') {
-//     console.log('Logged in.');
-//     window.location = "/index.html";
-//   }
-//   else {
-//     // FB.login();
-//     // window.location = "/index.html";
-//   }
-// });
-
-
-</script>
+        //   FB.getLoginStatus(function(response) {
+        //   if (response.status === 'connected') {
+        //     console.log('Logged in.');
+        //     window.location = "/index.html";
+        //   }
+        //   else {
+        //     // FB.login();
+        //     // window.location = "/index.html";
+        //   }
+        // });
+      </script>
     
+      <div class="container float">
+        <h2 class="title"><div data-icon="ei-sc-telegram" data-size="s"></div> Travel Visualizer</h2>
 
+        
 
-        <nav class="navbar navbar-inverse navbar-fixed-top">
-          <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-              <a class="navbar-brand" href="#">Travel Visualizer</a>
-            </div>
+<div class="row">
+  <div class="col-4 col-md-4"><img src="user.png" class="img-rounded" alt="User" width="80" height="80"></div>
+  <div class="col-8 col-md-8"><h3>USER123</h3></div>
+</div>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-              <ul class="nav navbar-nav">
-                <li class="active heatmap" onClick="load('heatmap.html')"><a>Heatmap</a></li>
-                <li class="bubble" onClick="load('index33.html')"><a>Bubble</a></li>
-                <li class="circle" onClick="load('bundle.html')"><a>Circle</a></li>
-                <li class="line" onClick="load('timeline.html')"><a>Line</a></li>
-                <li class="bar" onClick="load('bar.html')"><a>Bar Graph</a></li>
-              </ul>
+        <br>
 
-              <!--<ul class="nav navbar-nav navbar-right">
-                <div class="fb-login-button" style="margin-right:7px; margin-top:5px;"
-                 data-max-rows="1" data-size="large" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>
-                <li class="add" onClick="load('addLocations.html')"><a>Add Data</a></li>
-              </ul>-->
-            </div><!-- /.container-fluid -->
-        </nav>
+        <ul class="nav nav-pills nav-stacked gray" role="tablist">
+          <li class="active heatmap" onClick="load('heatmap.html')"><a class="hm"><img src="heatmapglyph.png" class="img-rounded" alt="Heatmap" width="40" height="40"> Heatmap</a><div class="heatmap-info">LEGEND: View where you have travelled on a heatmap.</div></li>
 
-        <div class="frame">
-            <iframe id="heatmap" src="heatmap.html"></iframe>
-            <iframe id="index33" style="display:none" src="index33.html"></iframe>
-            <iframe id="bundle" style="display:none" src="bundle.html"></iframe>
-            <iframe id="timeline" style="display:none" src="timeline.html"></iframe>
-            <iframe id="bar" style="display:none" src="bar.html"></iframe>
-        </div>
+          <li class="bubble" onClick="load('index33.html')"><a><img src="bubbleglyph.png" class="img-rounded" alt="Bubble Graph" width="40" height="40"> Bubble Graph</a><div class="bubble-info">LEGEND: Size of the circle is proportional to time spent in a given city.</div></li>
+
+          <li class="circle" onClick="load('bundle.html')"><a><img src="circleglyph.png" class="img-rounded" alt="Circle Graph" width="40" height="40"> Circle Graph</a><div class="circle-info">LEGEND: Each edge represents a city traveled to/from. Width of links from one edge to another represents the frequency of travels between the two cities. Colors of the links get darker with longer visits in a given city. TIP: Hover over graph for more informatio</div></li>
+
+          <li class="line" onClick="load('timeline.html')"><a><img src="lineglyph.png" class="img-rounded" alt="Line Graph" width="40" height="40"> Line Graph</a><div class="line-info">LEGEND: This is a timeline of how long you spent during each trip.</div></li>
+
+          <li class="bar" onClick="load('bar.html')"><a><img src="barglyph.png" class="img-rounded" alt="Bar Graph" width="40" height="40"> Bar Graph</a><div class="bar-info">LEGEND: This is a bar graph representation.</div></li>
+          <li onClick="random()"><a>I'm Feeling Lucky!</a></li>
+
+        </ul>
+        <br>
+      </div>
+
+      <div class="frame">
+        <iframe id="heatmap" src="heatmap.html"></iframe>
+        <iframe id="index33" style="display:none" src="index33.html"></iframe>
+        <iframe id="bundle" style="display:none" src="bundle.html"></iframe>
+        <iframe id="timeline" style="display:none" src="timeline.html"></iframe>
+        <iframe id="bar" style="display:none" src="bar.html"></iframe>
+      </div>
     </body>
 
     <script>
-        var firstIndex33 = false;
-        var firstBundle = false;
-        var firstTimeline= false;
-        var firstBar= false;
-     
-        function load(page_name) {
-          document.getElementById('heatmap').style.display = "none";
-          document.getElementById('index33').style.display = "none";
-          document.getElementById('bundle').style.display = "none";
-          document.getElementById('timeline').style.display = "none";
-          document.getElementById('bar').style.display = "none";
+      var firstIndex33 = false;
+      var firstBundle = false;
+      var firstTimeline= false;
+      var firstBar= false;
+   
+      function load(page_name) {
+        document.getElementById('heatmap').style.display = "none";
+        document.getElementById('index33').style.display = "none";
+        document.getElementById('bundle').style.display = "none";
+        document.getElementById('timeline').style.display = "none";
+        document.getElementById('bar').style.display = "none";
 
-            // document.getElementById('vis').src = page_name;
-            
-            // var iFrame = $('#vis');
-            // iFrame.load(page_name);
-            // document.getElementById('vis').contentDocument.location.reload(true);
-            // console.log(d1);
-            // console.log("3333");
-            // document.getElementById('vis').contentWindow.setUpData(d1);
+        // document.getElementById('vis').src = page_name;
+        
+        // var iFrame = $('#vis');
+        // iFrame.load(page_name);
+        // document.getElementById('vis').contentDocument.location.reload(true);
+        // console.log(d1);
+        // console.log("3333");
+        // document.getElementById('vis').contentWindow.setUpData(d1);
 
 
-            if($('.heatmap').hasClass('active')){
-              $('.heatmap').removeClass('active');
-            }
-            if($('.bubble').hasClass('active')){
-              $('.bubble').removeClass('active');
-            }
-            if($('.circle').hasClass('active')){
-              $('.circle').removeClass('active');
-            }
-            if($('.line').hasClass('active')){
-              $('.line').removeClass('active');
-            }
-            if($('.bar').hasClass('active')){
-              $('.bar').removeClass('active');
-            }
-
-            if(page_name == 'heatmap.html') {
-              $('.heatmap').addClass('active');
-              document.getElementById('heatmap').style.display = "";
-              // document.getElementById('heatmap').src = "heatmap.html";
-            }
-            if(page_name == 'index33.html') {
-              $('.bubble').addClass('active');
-              document.getElementById('index33').style.display = "";
-              if (firstIndex33 == false){
-                  document.getElementById('index33').src = "index33.html";
-                  firstIndex33 = true;
-              }
-              
-            }
-            if(page_name == 'bundle.html') {
-              $('.circle').addClass('active');
-              document.getElementById('bundle').style.display = "";
-              if (firstBundle == false){
-                  document.getElementById('bundle').src = "bundle.html";
-                  firstBundle = true;
-              }
-              
-
-            }
-            if(page_name == 'timeline.html') {
-              $('.line').addClass('active');
-              document.getElementById('timeline').style.display = "";
-               if (firstTimeline == false){
-                  document.getElementById('timeline').src = "timeline.html";
-                  firstTimeline = true;
-              }
-            }
-            if(page_name == 'bar.html') {
-              $('.bar').addClass('active');
-              document.getElementById('bar').style.display = "";
-               if (firstBar == false){
-                  document.getElementById('bar').src = "bar.html";
-                  firstBar = true;
-              }
-              
-            }
+        if($('.heatmap').hasClass('active')){
+          $('.heatmap').removeClass('active');
         }
+        if($('.bubble').hasClass('active')){
+          $('.bubble').removeClass('active');
+        }
+        if($('.circle').hasClass('active')){
+          $('.circle').removeClass('active');
+        }
+        if($('.line').hasClass('active')){
+          $('.line').removeClass('active');
+        }
+        if($('.bar').hasClass('active')){
+          $('.bar').removeClass('active');
+        }
+
+        if(page_name == 'heatmap.html') {
+          $('.heatmap').addClass('active');
+          document.getElementById('heatmap').style.display = "";
+          // document.getElementById('heatmap').src = "heatmap.html";
+        }
+        if(page_name == 'index33.html') {
+          $('.bubble').addClass('active');
+          document.getElementById('index33').style.display = "";
+          if (firstIndex33 == false){
+              document.getElementById('index33').src = "index33.html";
+              firstIndex33 = true;
+          }
+          
+        }
+        if(page_name == 'bundle.html') {
+          $('.circle').addClass('active');
+          document.getElementById('bundle').style.display = "";
+          if (firstBundle == false){
+              document.getElementById('bundle').src = "bundle.html";
+              firstBundle = true;
+          }
+        }
+        if(page_name == 'timeline.html') {
+          $('.line').addClass('active');
+          document.getElementById('timeline').style.display = "";
+           if (firstTimeline == false){
+              document.getElementById('timeline').src = "timeline.html";
+              firstTimeline = true;
+          }
+        }
+        if(page_name == 'bar.html') {
+          $('.bar').addClass('active');
+          document.getElementById('bar').style.display = "";
+           if (firstBar == false){
+              document.getElementById('bar').src = "bar.html";
+              firstBar = true;
+          }
+        }
+      }
+
+      function random() {
+        min = Math.ceil(1);
+        max = Math.floor(5);
+        rand =  Math.floor(Math.random() * (max - min + 1)) + min;
+
+        if(rand == 1) {
+          load('heatmap.html');
+        }
+        if(rand == 2) {
+          load('index33.html');
+        }
+        if(rand == 3) {
+          load('bundle.html');
+        }
+        if(rand == 4) {
+          load('timeline.html');
+        }
+        if(rand == 5) {
+          load('bar.html');
+        }
+      }
+
    </script>
 </html>

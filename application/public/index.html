@@ -151,6 +151,19 @@
             document.getElementById('heatmap').contentWindow.setUpData(d1);
           });
 
+          FB.api(
+            '/me/',
+            'GET',
+            {"fields":"name,location,picture"},
+            function(response) {
+              document.getElementById("name-fb").innerHTML = response.name;
+              
+              document.getElementById("pic-fb").src = response.picture.data.url;
+              document.getElementById("location-fb").innerHTML = response.location.name;
+                // console.log(response);
+            }
+          );
+
           }); 
 
           console.log(accessToken1);
@@ -200,8 +213,9 @@
         
 
 <div class="row">
-  <div class="col-4 col-md-4"><img src="user.png" class="img-rounded" alt="User" width="80" height="80"></div>
-  <div class="col-8 col-md-8"><h3>USER123</h3></div>
+  <div class="col-4 col-md-4"><img src="user.png" id="pic-fb" class="img-rounded" alt="User" width="80" height="80"></div>
+  <div class="col-8 col-md-8"><h3 id ="name-fb" style="margin-top:10px;"></h3>
+  <h4 id ="location-fb"></h4></div>
 </div>
 
         <br>

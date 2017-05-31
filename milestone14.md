@@ -27,10 +27,8 @@ Heatmap:
 ![alt tag](https://github.com/ameezus/cogs121/blob/master/ms7heatmap2.png) 
 
 Bubble graph:
-![alt tag](https://github.com/ameezus/cogs121/blob/master/bubbleglyph.PNG)
+![alt tag](https://github.com/ameezus/cogs121/blob/master/bubble.png)
 
-Circle graph:
-![alt tag](https://github.com/ameezus/cogs121/blob/master/circle.png)
 
 
 - The app contains a navbar (image below) that allows users to navigate through the website. Hovering the mouse over each link 

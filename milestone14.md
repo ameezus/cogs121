@@ -20,7 +20,7 @@ include a heatmap (made with Google Maps), bubble graph, circle graph, line grap
 except for the heatmap are created using Vega. 
 
 Heatmap:
-![alt tag](https://github.com/ameezus/cogs121/blob/master/ms7heatmap2.PNG) 
+![alt tag](https://github.com/ameezus/cogs121/blob/master/ms7heatmap2.png) 
 
 Bubble graph:
 ![alt tag](https://github.com/ameezus/cogs121/blob/master/bubbleglyph.PNG)

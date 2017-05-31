@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
     <head>
-        <title> Travel Visualizer</title>
+        <title> Travel Tracker</title>
           <meta property="og:url"           content="http://localhost:3000/" />
           <meta property="og:type"          content="website" />
           <meta property="og:title"         content="Trip Tracker" />
@@ -105,7 +105,7 @@
       <script>
         var d1;
         var accessToken1 = "done";
-        
+
         (function(d, s, id){
           var js, fjs = d.getElementsByTagName(s)[0];
           if (d.getElementById(id)) {return;}
@@ -138,7 +138,7 @@
           }
             statusChangeCallback(response);
             console.log(response.status);
-            
+
 
             FB.api(
           '/me/feed',
@@ -157,17 +157,17 @@
             {"fields":"name,location,picture"},
             function(response) {
               document.getElementById("name-fb").innerHTML = response.name;
-              
+
               document.getElementById("pic-fb").src = response.picture.data.url;
               document.getElementById("location-fb").innerHTML = response.location.name;
                 // console.log(response);
             }
           );
 
-          }); 
+          });
 
           console.log(accessToken1);
-          
+
         };
 
         function checkLoginState() {
@@ -206,11 +206,11 @@
         //   }
         // });
       </script>
-    
-      <div class="container float">
-        <h2 class="title"><div data-icon="ei-sc-telegram" data-size="s"></div> Travel Visualizer</h2>
 
-        
+      <div class="container float">
+        <h2 class="title"><div data-icon="ei-sc-telegram" data-size="s"></div> Travel Tracker</h2>
+
+
 
 <div class="row">
   <div class="col-4 col-md-4"><img src="user.png" id="pic-fb" class="img-rounded" alt="User" width="80" height="80"></div>
@@ -251,7 +251,7 @@
       var firstBundle = false;
       var firstTimeline= false;
       var firstBar= false;
-   
+
       function load(page_name) {
         document.getElementById('heatmap').style.display = "none";
         document.getElementById('index33').style.display = "none";
@@ -260,7 +260,7 @@
         document.getElementById('bar').style.display = "none";
 
         // document.getElementById('vis').src = page_name;
-        
+
         // var iFrame = $('#vis');
         // iFrame.load(page_name);
         // document.getElementById('vis').contentDocument.location.reload(true);
@@ -297,7 +297,7 @@
               document.getElementById('index33').src = "index33.html";
               firstIndex33 = true;
           }
-          
+
         }
         if(page_name == 'bundle.html') {
           $('.circle').addClass('active');

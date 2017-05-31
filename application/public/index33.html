@@ -18,6 +18,60 @@
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script>
 
+
+
+   var data = {"hello":3};
+   var hi = 0;
+   function done (){
+    console.log(hi++);
+   }
+   
+function setUpData(d) {
+    data = d;
+    var newData = data;
+    var geocoder = new google.maps.Geocoder;
+    var ind = 0;
+    console.log(data);
+    // for ( i = 0; i < data.data.length; i++){
+    //     if (data.data[i].place != undefined){
+    //       console.log("2");
+    //       var latlng = {lat: data.data[i].place.location.latitude,lng : data.data[i].place.location.longitude};
+    //       ind++;
+    //       geocoder.geocode({'location': latlng}, function(results, status) {
+    //       if (status === 'OK') {
+    //         if (results[1]) {
+    //           // console.log(formatted_address);
+    //           newData.push({ "id" :results[1].formatted_address, "value" : 4000});
+    //           console.log(newData);
+    //         } else {
+    //           window.alert('No results found');
+    //         }
+    //       } else {
+    //         // window.alert('Geocoder failed due to: ' + status);
+    //       }
+
+    //       done();
+    //     });
+
+
+    //         // dataClean.push(  new google.maps.LatLng(data.data[i].place.location.latitude, data.data[i].place.location.longitude) );
+    //     }
+        
+    // }
+    console.log(ind);
+    // while (ind != hi){
+    //   console.log(hi);
+    // }
+    
+    console.log("eee"+newData);
+    runTest(newData);
+    // initMap(dataClean);
+    // console.log(dataClean);
+
+}
+
+function runTest(nd){
+  var newData = nd;
 var svg = d3.select("svg");
 var width = window.innerWidth,
     height = window.innerHeight-75;
@@ -32,10 +86,11 @@ var color = d3.scaleOrdinal(d3.schemeCategory20c);
 var pack = d3.pack()
     .size([width, height])
     .padding(2);
+var called = 0;
+
 
 d3.csv("flare.csv", function(d) {
-  d.value = +d.value;
-  if (d.value) return d;
+return newData[called++];
 }, function(error, classes) {
   if (error) throw error;
 
@@ -79,5 +134,11 @@ d3.csv("flare.csv", function(d) {
       .text(function(d) { return d.id + "\n" + format(d.value); });
 });
 
+}
+
+
 </script>
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAfF4e6tsnSJcHmF1jFhyAG_fxukjt-i8I&callback=initMap">
+    </script>
 </body>

@@ -10,6 +10,8 @@
         <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 
         <style>
+          @import url(https://fonts.googleapis.com/css?family=Roboto);
+            @import url(https://fonts.googleapis.com/css?family=Lobster);
             html{
                 height:100%
             }
@@ -25,6 +27,7 @@
                 height: 100%;
                 position: absolute;
                 z-index: 99;
+                /*background-color:lightgreen;*/
             }
             iframe{
                 border:0;
@@ -33,13 +36,14 @@
             }
             .float {
               position: absolute;
-              top: 30px;
-              left: 30px;
+              top: 0px;
+              left: 0px;
               z-index: 100;
               max-width: 300px;
+              height: 100%;
               background-color: white;
-              border-radius: 15px;
-              -moz-border-radius: 15px;
+              border-radius: 0px;
+              box-shadow: 0px 0px 5px #888888;
             }
             .title {
               color: black;
@@ -105,6 +109,7 @@
       <script>
         var d1;
         var accessToken1 = "done";
+        var newData;
 
         (function(d, s, id){
           var js, fjs = d.getElementsByTagName(s)[0];
@@ -149,6 +154,60 @@
             // console.log(response);
             d1 = response;
             document.getElementById('heatmap').contentWindow.setUpData(d1);
+            
+            var a = 0;
+            var geocoder = new google.maps.Geocoder;
+            newData = [];
+            for ( i = 0; i < d1.data.length; i++){
+
+          
+
+      
+    
+                if (d1.data[i].place != undefined){
+                  console.log("2");
+                  var latlng = {lat: d1.data[i].place.location.latitude,lng : d1.data[i].place.location.longitude};
+                  a++;
+               
+                  
+                  geocoder.geocode({'location': latlng}, function(results, status) {
+                  if (status === 'OK') {
+                    if (results[1]) {
+                      // console.log(formatted_address);
+                      found = false;
+                      for (i =0; i < newData.length; i++){
+                        if (newData[i].id == results[1].formatted_address){
+                          newData[i].value += 4000;
+                          found = true;
+                        }
+                      }
+                      if (found == false){
+                        newData.push({ "id" :results[1].formatted_address, "value" : 4000});
+                      }
+                      
+                    }
+                  }  else {
+                    console.log(status);
+                    // window.alert('Geocoder failed due to: ' + status);
+                  }
+                  a--;
+                  if (a ==0){
+                    // document.getElementById('index33').src = "index33.html";
+                    document.getElementById('index33').style.display = "";
+                    document.getElementById('index33').contentWindow.setUpData(newData);
+                    document.getElementById('index33').style.display = "none";
+                  }
+                });
+                
+
+                }
+                
+
+            }
+            // while(a != 0){
+            //   console.log("waiting" + a);
+            // }
+            
           });
 
           FB.api(
@@ -208,7 +267,7 @@
       </script>
 
       <div class="container float">
-        <h2 class="title"><div data-icon="ei-sc-telegram" data-size="s"></div> Travel Tracker</h2>
+        <h2 class="title" style="font-family: 'Lobster', cursive; color:#462255;  font-weight:bold;"> Travel Tracker</h2>
 
 
 
@@ -241,6 +300,7 @@
         <iframe id="heatmap" src="heatmap.html"></iframe>
         <iframe id="index33" style="display:none" src="index33.html"></iframe>
         <iframe id="bundle" style="display:none" src="bundle.html"></iframe>
+       
         <iframe id="timeline" style="display:none" src="timeline.html"></iframe>
         <iframe id="bar" style="display:none" src="bar.html"></iframe>
       </div>
@@ -294,7 +354,11 @@
           $('.bubble').addClass('active');
           document.getElementById('index33').style.display = "";
           if (firstIndex33 == false){
-              document.getElementById('index33').src = "index33.html";
+            console.log("s" + newData);
+              // document.getElementById('index33').src = "index33.html";
+              
+              // document.getElementById('index33').contentWindow.setUpData(newData);
+
               firstIndex33 = true;
           }
 
@@ -349,3 +413,6 @@
 
    </script>
 </html>
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLl34kOmjGhUSeIeFAGFvxxMP4gZPRQAo&callback=initMap">
+    </script>

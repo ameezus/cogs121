@@ -55,9 +55,7 @@
     var data = {"hello":3};
     var dataClean = [];
 function setUpData(d) {
-    console.log("Sss333");
     data = d;
-    console.log(data.data);
     // dataClean 
     for ( i = 0; i < data.data.length; i++){
         if (data.data[i].place != undefined){
@@ -66,7 +64,6 @@ function setUpData(d) {
         
     }
     initMap(dataClean);
-    console.log(dataClean);
 
 }
 </script>
@@ -93,7 +90,7 @@ function setUpData(d) {
 
         map = new google.maps.Map(document.getElementById('map'), {
           zoom: 3,
-          center: {lat: 20, lng: -20},
+          center: {lat: 30, lng: -60},
           styles: [
     {
         "featureType": "administrative",

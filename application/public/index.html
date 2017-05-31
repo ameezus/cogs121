@@ -2,6 +2,11 @@
 <html>
     <head>
         <title> Travel Visualizer</title>
+          <meta property="og:url"           content="http://localhost:3000/" />
+          <meta property="og:type"          content="website" />
+          <meta property="og:title"         content="Trip Tracker" />
+          <meta property="og:description"   content="Track your trips with these vizualizations" />
+          <meta property="og:image"         content="https://scontent-lax3-2.xx.fbcdn.net/v/t1.0-9/12592475_10154451990549918_741596529388701968_n.jpg?oh=0511ad53ea0cbd9e8d4fa04c7803364c&oe=59E525B5" />
         <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 
         <style>
@@ -89,6 +94,14 @@
 
     </head>
     <body>
+     <script> (function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.9&appId=1748661652113701";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+        </script>
       <script>
         var d1;
         var accessToken1 = "done";
@@ -204,6 +217,7 @@
 
           <li class="bar" onClick="load('bar.html')"><a><img src="barglyph.png" class="img-rounded" alt="Bar Graph" width="40" height="40"> Bar Graph</a><div class="bar-info">LEGEND: This is a bar graph representation.</div></li>
           <li onClick="random()"><a>I'm Feeling Lucky!</a></li>
+          <li> <div class="fb-share-button" data-href="https://www.amazon.com/" data-layout="button" data-size="large" data-mobile-iframe="false"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Share</a></div></li>
 
         </ul>
         <br>

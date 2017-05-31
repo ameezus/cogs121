@@ -148,12 +148,21 @@
             FB.api(
           '/me/feed',
           'GET',
-          {"fields":"place",
+          {"fields":"place,full_picture",
           access_token : accessToken1},
           function(response) {
+
+
+
             // console.log(response);
             d1 = response;
             document.getElementById('heatmap').contentWindow.setUpData(d1);
+
+            $.getJSON('https://www.mapquestapi.com/geocoding/v1/reverse?key=3nkE6O1ETMDVmrYy9iFN8wcAWqjkNqqR&location=39.755695%2C-104.995986&outFormat=json&thumbMaps=false', function(outData) {
+              console.log(outData);
+          });
+
+            // https://www.mapquestapi.com/geocoding/v1/reverse?key=KEY&location=39.755695%2C-104.995986&outFormat=json&thumbMaps=false
             
             var a = 0;
             var geocoder = new google.maps.Geocoder;
@@ -162,51 +171,61 @@
 
           
 
-      
+
     
                 if (d1.data[i].place != undefined){
                   console.log("2");
                   var latlng = {lat: d1.data[i].place.location.latitude,lng : d1.data[i].place.location.longitude};
                   a++;
-               
-                  
-                  geocoder.geocode({'location': latlng}, function(results, status) {
-                  if (status === 'OK') {
-                    if (results[1]) {
-                      // console.log(formatted_address);
+
+                  $.getJSON('https://www.mapquestapi.com/geocoding/v1/reverse?key=3nkE6O1ETMDVmrYy9iFN8wcAWqjkNqqR&'+
+                  'location='+d1.data[i].place.location.latitude+'%2C'+d1.data[i].place.location.longitude+
+                  '&outFormat=json&thumbMaps=false', function(outData) {
                       found = false;
+                      address = outData.results[0].locations[0].adminArea5 +outData.results[0].locations[0].adminArea3 + " " + outData.results[0].locations[0].adminArea1;
                       for (i =0; i < newData.length; i++){
-                        if (newData[i].id == results[1].formatted_address){
+                        
+                        if (newData[i].id == address){
                           newData[i].value += 4000;
                           found = true;
                         }
                       }
                       if (found == false){
-                        newData.push({ "id" :results[1].formatted_address, "value" : 4000});
+                        newData.push({ "id" :address, "value" : 4000});
                       }
-                      
-                    }
-                  }  else {
-                    console.log(status);
-                    // window.alert('Geocoder failed due to: ' + status);
-                  }
-                  a--;
+                      a--;
                   if (a ==0){
                     // document.getElementById('index33').src = "index33.html";
                     document.getElementById('index33').style.display = "";
                     document.getElementById('index33').contentWindow.setUpData(newData);
                     document.getElementById('index33').style.display = "none";
                   }
-                });
-                
 
-                }
-                
+                  });
+               
+
+
+              }
 
             }
-            // while(a != 0){
-            //   console.log("waiting" + a);
-            // }
+            console.log("fhdjklfhdkjlfh");
+            console.log(d1.data);
+        var dataPhotosClean = [];
+
+        for ( i = 0; i < d1.data.length; i++){
+                if (d1.data[i].full_picture != undefined){
+                    imgDiv = "<div> <img src='"+ d1.data[i].full_picture +"' style='height:200px;'> </img> </div>";
+                    lat = d1.data[i].place.location.latitude;
+                    long = d1.data[i].place.location.longitude;
+                    full = [imgDiv, lat, long, i];
+                    dataPhotosClean.push( full );
+                }
+                
+            }
+document.getElementById('photos').style.display = "";
+                            document.getElementById('photos').contentWindow.setUpData(dataPhotosClean);
+
+                    document.getElementById('photos').style.display = "none";
             
           });
 
@@ -264,6 +283,12 @@
         //     // window.location = "/index.html";
         //   }
         // });
+        function logout(){
+    FB.logout(function(response) {
+            window.location = "/login.html";
+          });
+        }
+       
       </script>
 
       <div class="container float">
@@ -280,18 +305,18 @@
         <br>
 
         <ul class="nav nav-pills nav-stacked gray" role="tablist">
-          <li class="active heatmap" onClick="load('heatmap.html')"><a class="hm"><img src="heatmapglyph.png" class="img-rounded" alt="Heatmap" width="40" height="40"> Heatmap</a><div class="heatmap-info">LEGEND: View where you have travelled on a heatmap.</div></li>
+          <li class="active heatmap" onClick="load('heatmap.html')"><a class="hm"><img src="heatmapglyph.png" class="img-rounded" alt="Heatmap" width="40" height="40"> Heatmap</a><div class="heatmap-info"> View where you have travelled on a heatmap.</div></li>
 
-          <li class="bubble" onClick="load('index33.html')"><a><img src="bubbleglyph.png" class="img-rounded" alt="Bubble Graph" width="40" height="40"> Bubble Graph</a><div class="bubble-info">LEGEND: Size of the circle is proportional to time spent in a given city.</div></li>
+          <li class="bubble" onClick="load('index33.html')"><a><img src="bubbleglyph.png" class="img-rounded" alt="Bubble Graph" width="40" height="40"> Bubble Graph</a><div class="bubble-info"> Size of the circle is proportional to time spent in a given city.</div></li>
 
-          <li class="circle" onClick="load('bundle.html')"><a><img src="circleglyph.png" class="img-rounded" alt="Circle Graph" width="40" height="40"> Circle Graph</a><div class="circle-info">LEGEND: Each edge represents a city traveled to/from. Width of links from one edge to another represents the frequency of travels between the two cities. Colors of the links get darker with longer visits in a given city. TIP: Hover over graph for more informatio</div></li>
+          <li class="circle" onClick="load('photos.html')"><a><img src="heatmapglyph2.png" class="img-rounded" alt="Photo Map" width="40" height="40"> Photo Map</a><div class="circle-info"> Each edge represents a city traveled to/from. Width of links from one edge to another represents the frequency of travels between the two cities. Colors of the links get darker with longer visits in a given city. TIP: Hover over graph for more informatio</div></li>
 
-          <li class="line" onClick="load('timeline.html')"><a><img src="lineglyph.png" class="img-rounded" alt="Line Graph" width="40" height="40"> Line Graph</a><div class="line-info">LEGEND: This is a timeline of how long you spent during each trip.</div></li>
+          <!--<li class="line" onClick="load('timeline.html')"><a><img src="lineglyph.png" class="img-rounded" alt="Line Graph" width="40" height="40"> Line Graph</a><div class="line-info">LEGEND: This is a timeline of how long you spent during each trip.</div></li>
 
           <li class="bar" onClick="load('bar.html')"><a><img src="barglyph.png" class="img-rounded" alt="Bar Graph" width="40" height="40"> Bar Graph</a><div class="bar-info">LEGEND: This is a bar graph representation.</div></li>
-          <li onClick="random()"><a>I'm Feeling Lucky!</a></li>
-          <li> <div class="fb-share-button" data-href="https://www.amazon.com/" data-layout="button" data-size="large" data-mobile-iframe="false"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Share</a></div></li>
-
+          <li onClick="random()"><a>I'm Feeling Lucky!</a></li>-->
+          <li> <div class="fb-share-button" style="margin-left:15px;" data-href="https://www.amazon.com/" data-layout="button" data-size="large" data-mobile-iframe="false"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Share</a></div></li>
+          <li><a href="#" onclick="logout();"> Logout </a> </li>
         </ul>
         <br>
       </div>
@@ -299,7 +324,7 @@
       <div class="frame">
         <iframe id="heatmap" src="heatmap.html"></iframe>
         <iframe id="index33" style="display:none" src="index33.html"></iframe>
-        <iframe id="bundle" style="display:none" src="bundle.html"></iframe>
+        <iframe id="photos" style="display:none" src="photos.html"></iframe>
        
         <iframe id="timeline" style="display:none" src="timeline.html"></iframe>
         <iframe id="bar" style="display:none" src="bar.html"></iframe>
@@ -315,7 +340,7 @@
       function load(page_name) {
         document.getElementById('heatmap').style.display = "none";
         document.getElementById('index33').style.display = "none";
-        document.getElementById('bundle').style.display = "none";
+        document.getElementById('photos').style.display = "none";
         document.getElementById('timeline').style.display = "none";
         document.getElementById('bar').style.display = "none";
 
@@ -363,11 +388,11 @@
           }
 
         }
-        if(page_name == 'bundle.html') {
+        if(page_name == 'photos.html') {
           $('.circle').addClass('active');
-          document.getElementById('bundle').style.display = "";
+          document.getElementById('photos').style.display = "";
           if (firstBundle == false){
-              document.getElementById('bundle').src = "bundle.html";
+              // document.getElementById('photos').src = "photos.html";
               firstBundle = true;
           }
         }
@@ -401,7 +426,7 @@
           load('index33.html');
         }
         if(rand == 3) {
-          load('bundle.html');
+          load('photos.html');
         }
         if(rand == 4) {
           load('timeline.html');

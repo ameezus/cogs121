@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Info windows</title>
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+ var locations = [
+      
+      
+    ];
+   
+     
+      var map;
+      function initMap() {
+        red = true;
+        console.log(red);
+
+        console.log(locations);
+        // locations = d;
+        var uluru = {lat: 30, lng: -60};
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 3,
+          center: uluru
+        });
+
+     
+
+        var infowindow = new google.maps.InfoWindow();
+
+    var marker, i;
+   
+
+    for (i = 0; i < locations.length; i++) {  
+      marker = new google.maps.Marker({
+        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+        map: map
+      });
+
+      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+          infowindow.setContent(locations[i][0]);
+          infowindow.open(map, marker);
+        }
+      })(marker, i));
+    }
+        console.log("READY");
+      }
+
+
+
+
+function addmarker(latilongi) {
+    var marker = new google.maps.Marker({
+        position: latilongi,
+        title: 'new marker',
+        draggable: true,
+        map: map
+    });
+    map.setCenter(marker.getPosition())
+}
+
+      function addMarkers(d){
+var locations1 = [
+      ['<div style="background-color:red;"> ddd</div>', -33.890542, 151.274856, 4]
+      
+    ];
+    
+
+        var infowindow = new google.maps.InfoWindow();
+
+    var marker, i;
+   marker = new google.maps.Marker({
+    position: new google.maps.LatLng(44.58, -95.46),
+    map: map, 
+    title: "Hello World!"
+    });
+
+    for (i = 0; i < locations1.length; i++) { 
+      console.log(locations1); 
+      marker = new google.maps.Marker({
+        position: new google.maps.LatLng(locations1[i][1], locations1[i][2]),
+        map: map
+      });
+
+      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+          infowindow.setContent(locations1[i][0]);
+          infowindow.open(map, marker);
+        }
+      })(marker, i));
+    }
+
+      }
+
+       function setUpData(d) {
+
+         initMap();
+         var infowindow = new google.maps.InfoWindow();
+      locations = d;
+      for (i = 0; i < locations.length; i++) { 
+      console.log(locations); 
+      marker = new google.maps.Marker({
+        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+        map: map
+      });
+
+      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+          infowindow.setContent(locations[i][0]);
+          infowindow.open(map, marker);
+        }
+      })(marker, i));
+    }
+    }
+    </script>
+      <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqIRVAN-BQkHCpcoGpg6K-ZqQvAHxSZk8&libraries=visualization&callback=initMap">
+    </script>
+  </body>
+</html>

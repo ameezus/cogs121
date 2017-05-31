@@ -2,7 +2,9 @@ Belal Aboabdo:
 
 Ameer Muhtaseb:
 
-Khaled Ahmad:
+Khaled Ahmad: I worked implementing the backend of the application, grabbing all the data from the Facebook API and scrubing it
+then adding it to the visualization. I also implemented the login sysytem, and the photomap visualization. I connected all the data
+from FB to the d3 visualizations. 
 
 Shreeman Hariharan: I worked on the navigation panel by making vertical and adding the feature where the legend for the 
 graph is shown in response to hovering the mouse over the link. I also made this navbar more informative by adding small

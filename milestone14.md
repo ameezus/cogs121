@@ -30,13 +30,8 @@ Bubble graph:
 ![alt tag](https://github.com/ameezus/cogs121/blob/master/bubbleglyph.PNG)
 
 Circle graph:
-![alt tag](https://github.com/ameezus/cogs121/blob/master/circleglyph.PNG)
+![alt tag](https://github.com/ameezus/cogs121/blob/master/circle.png)
 
-Line graph:
-![alt tag](https://github.com/ameezus/cogs121/blob/master/lineglyph.PNG)
-
-Bar graph:
-![alt tag](https://github.com/ameezus/cogs121/blob/master/barglyph.PNG)
 
 - The app contains a navbar (image below) that allows users to navigate through the website. Hovering the mouse over each link 
 label allows the user to see a description/legend of each graph/map representation. The user can randomly choose a graph to be 

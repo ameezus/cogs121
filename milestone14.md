@@ -36,4 +36,4 @@ Photo Map:
 label allows the user to see a description/legend of each graph/map representation. The user can randomly choose a graph to be 
 displayed.
 
-![alt tag](https://github.com/ameezus/cogs121/blob/master/navbar.png)
+![alt tag](https://github.com/ameezus/cogs121/blob/master/navbarnew.png)

@@ -1,24 +1,22 @@
 {
-  "name": "IntroHCI",
-  "version": "0.0.1",
-  "author": "Intro HCI Staff",
+  "name": "cogs121",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ameezus/cogs121"
+    "url": "git+https://github.com/ameezus/cogs121.git"
   },
-  "license": "MIT",
-  "private": true,
-  "scripts": {
-    "start": "node app.js"
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ameezus/cogs121/issues"
   },
-  "dependencies": {
-    "d3-timeline-chart": "^1.3.0",
-    "express": "3.x",
-    "express3-handlebars": "*",
-    "mongodb": "*",
-    "mongoose": "*"
-  },
-  "engines": {
-    "node": "0.10.x"
-  }
+  "homepage": "https://github.com/ameezus/cogs121#readme"
 }

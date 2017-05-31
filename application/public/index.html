@@ -91,7 +91,7 @@
     <body>
       <script>
         var d1;
-        var accessToken = "EAACEdEose0cBANnN4a1bhW44shMnBIOvd30mgmfyD9SY4ViYFAfQoly2Tg7OtkHVwpcR3LJ8VOV5VbXRKxy2Vtw0jq1sCafNMQG1KsPw0ZAldZAAR6rUrgSXSdE1SSAc14sZADdZBLo3ipNubrZB6J8lZATvCoGhNGUXTi0GDntCvEwroWPKpZA";
+        var accessToken1 = "done";
         
         (function(d, s, id){
           var js, fjs = d.getElementsByTagName(s)[0];
@@ -111,23 +111,35 @@
           });
           FB.AppEvents.logPageView();
 
-          checkLoginState();
+          // checkLoginState();
+          // FB.getAuthResponse();
 
-          console.log(accessToken);
-          FB.api(
+          FB.getLoginStatus(function(response) {
+            accessToken1 = response.authResponse.accessToken;
+            console.log("ddd" + accessToken1);
+            statusChangeCallback(response);
+
+            FB.api(
           '/me/feed',
           'GET',
           {"fields":"place",
-          access_token : accessToken},
+          access_token : accessToken1},
           function(response) {
             // console.log(response);
             d1 = response;
             document.getElementById('heatmap').contentWindow.setUpData(d1);
           });
+
+          }); 
+
+          console.log(accessToken1);
+          
         };
 
         function checkLoginState() {
           FB.getLoginStatus(function(response) {
+            accessToken1 = response.authResponse.accessToken;
+            console.log("ddd" + accessToken1);
             statusChangeCallback(response);
           });
         }

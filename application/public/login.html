@@ -3,7 +3,6 @@
         <style>
             @import url(https://fonts.googleapis.com/css?family=Roboto);
             @import url(https://fonts.googleapis.com/css?family=Lobster);
-
 .login-page {
   width: 700px;
   padding: 8% 0 0;
@@ -122,8 +121,6 @@ body {
      js.src = "//connect.facebook.net/en_US/sdk.js";
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
-
-
   window.fbAsyncInit = function() {
     FB.init({
       appId            : '290268441425908',
@@ -132,18 +129,13 @@ body {
       version          : 'v2.9'
     });
     FB.AppEvents.logPageView();
-
-
   checkLoginState();
-
-
   };
  function checkLoginState() {
     FB.getLoginStatus(function(response) {
       statusChangeCallback(response);
     });
   }
-
   function statusChangeCallback(response) {
     console.log('statusChangeCallback');
     console.log(response);
@@ -158,7 +150,6 @@ body {
       
     }
   }
-
 //   FB.getLoginStatus(function(response) {
 //   if (response.status === 'connected') {
 //     console.log('Logged in.');
@@ -169,8 +160,6 @@ body {
 //     // window.location = "/index.html";
 //   }
 // });
-
-
 </script>
     
 
@@ -178,12 +167,12 @@ body {
         <div class="login-page">
   <div class="form">
       <div style="font-family: 'Lobster', cursive; color:#462255; font-size:50px; font-weight:bold;">
-        Trip Visualizer
+        Trip Tracker
       </div>
       <div><br>
         Login through Facebook to see your Visualizations!
       </div><br>
-<div class="fb-login-button"   onlogin="checkLoginState();" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="true"></div>
+<div class="fb-login-button"   onlogin="checkLoginState();" data-scope="public_profile,email,user_posts,user_photos" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="true"></div>
       
   </div>
 </div>

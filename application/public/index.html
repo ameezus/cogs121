@@ -117,7 +117,15 @@
           FB.getLoginStatus(function(response) {
             accessToken1 = response.authResponse.accessToken;
             console.log("ddd" + accessToken1);
+          if (response.status === 'connected') {
+            // Logged into your app and Facebook.
+            // window.location = "/index.html";
+          } else {
+            window.location = "/login.html";
+          }
             statusChangeCallback(response);
+            console.log(response.status);
+            
 
             FB.api(
           '/me/feed',

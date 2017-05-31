@@ -1,5 +1,4 @@
-Belal Aboabdo:
-
+Belal Aboabdo: Set up share to Facebook which shares a link to the deployed app to the users Facebook. Also worked on finishing up final D3 graphs and deploying the Heroku.
 Ameer Muhtaseb:
 
 Khaled Ahmad: I worked implementing the backend of the application, grabbing all the data from the Facebook API and scrubing it
